@@ -1,0 +1,6 @@
+- JOB: "intercept -g $DEVNODE | s2arrows | dual-function-keys -c /etc/interception/dual-function-keys/my-mappings.yaml | uinput -d $DEVNODE"
+  DEVICE:
+    NAME: "AT Translated Set 2 keyboard"
+    EVENTS:
+      EV_KEY: [KEY_CAPSLOCK, KEY_LEFTALT, KEY_ESC, KEY_H, KEY_J, KEY_K, KEY_L,
+              KEY_LEFT, KEY_DOWN, KEY_UP, KEY_RIGHT, KEY_U, KEY_D, KEY_G, KEY_LEFTSHIFT]
