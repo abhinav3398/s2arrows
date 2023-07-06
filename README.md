@@ -70,7 +70,7 @@ commands to each other and append the keys to the list instead:
                KEY_LEFT, KEY_DOWN, KEY_UP, KEY_RIGHT]
 ```
 
-Also, here is my setup:
+Also, here is my setup with [dual-function-keys](https://gitlab.com/interception/linux/plugins/dual-function-keys) plugin:
 
 ```yaml
 - JOB: "intercept -g $DEVNODE | s2arrows | dual-function-keys -c /etc/interception/dual-function-keys/my-mappings.yaml | uinput -d $DEVNODE"
