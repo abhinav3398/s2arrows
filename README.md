@@ -29,6 +29,8 @@ fact, once you get used to this, it's very hard to go back.
 
 - [Interception Tools][interception-tools]
 
+Apart from This I have also added my keybingings of dual [function](dual-function-keys/my-mappings.yaml) keys as well.
+
 ## Building
 
 ```sh
@@ -68,22 +70,18 @@ commands to each other and append the keys to the list instead:
                KEY_LEFT, KEY_DOWN, KEY_UP, KEY_RIGHT]
 ```
 
-### systemd
+Also, here is my setup:
 
-A suggested systemd service to run udevmon can be setup by creating the
-following file (`/etc/systemd/udevmon.service`):
-
-```ini
-[Unit]
-Description=udevmon
-After=systemd-user-sessions.service
-
-[Service]
-ExecStart=/usr/bin/nice -n -20 usr/local/bin/udevmon -c /etc/udevmon.yaml
-
-[Install]
-WantedBy=multi-user.target
+```yaml
+- JOB: "intercept -g $DEVNODE | s2arrows | dual-function-keys -c /etc/interception/dual-function-keys/my-mappings.yaml | uinput -d $DEVNODE"
+  DEVICE:
+    NAME: "AT Translated Set 2 keyboard"
+    EVENTS:
+      EV_KEY: [KEY_CAPSLOCK, KEY_LEFTALT, KEY_ESC, KEY_H, KEY_J, KEY_K, KEY_L,
+              KEY_LEFT, KEY_DOWN, KEY_UP, KEY_RIGHT, KEY_U, KEY_D, KEY_G, KEY_LEFTSHIFT]
 ```
+
+### systemd
 
 Then, you can enable and start the service like any other:
 
@@ -114,3 +112,4 @@ has never been a problem for me.
 
 [caps2esc]: https://gitlab.com/interception/linux/plugins/caps2esc
 [interception-tools]: https://gitlab.com/interception/linux/tools
+
